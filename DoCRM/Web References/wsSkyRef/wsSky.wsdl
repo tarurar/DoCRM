@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd1="www.sky3a.hiware.ru" xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12bind="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="www.sky3a.hiware.ru" name="wsSky" targetNamespace="www.sky3a.hiware.ru" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xs:schema xmlns:xs1="www.sky3a.hiware.ru" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="www.sky3a.hiware.ru" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="del_otServiceHeaderEdit">
+        <xs:sequence>
+          <xs:element name="prHeaderEdited" type="xs:int" />
+          <xs:element name="prDate" type="xs:string" />
+          <xs:element name="prTime" type="xs:string" />
+          <xs:element name="prPacient" type="xs:string" />
+          <xs:element name="prUserName" type="xs:string" />
+          <xs:element name="prCaption" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otAnyActionData">
+        <xs:sequence>
+          <xs:element name="prWSID" type="xs:int" />
+          <xs:element name="prAnyActionParams" type="xs1:otAnyActionParams" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otAnyActionParam">
+        <xs:sequence>
+          <xs:element name="prName" type="xs:string" />
+          <xs:element name="prValue" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otAnyActionParams">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="prAnyActionParam" type="xs1:otAnyActionParam" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otAnyActionResp">
+        <xs:sequence>
+          <xs:element name="prRespHeader" type="xs1:otRespHeader" />
+          <xs:element name="prWSID" type="xs:int" />
+          <xs:element name="prAnyActionParams" type="xs1:otAnyActionParams" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otCheckUser">
+        <xs:sequence>
+          <xs:element name="prRespHeader" type="xs1:otRespHeader" />
+          <xs:element name="prUserRef" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otObjectList">
+        <xs:sequence>
+          <xs:element name="prRespHeader" type="xs1:otRespHeader" />
+          <xs:element name="prRecordCount" type="xs:int" />
+          <xs:element name="prPageCount" type="xs:int" />
+          <xs:element name="prAnyActionParams" type="xs1:otAnyActionParams" />
+          <xs:element name="prObjectRows" type="xs1:otObjectRows" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otObjectRow">
+        <xs:sequence>
+          <xs:element name="prParam1" type="xs:string" />
+          <xs:element name="prParam2" type="xs:string" />
+          <xs:element name="prParam3" type="xs:string" />
+          <xs:element name="prParam4" type="xs:string" />
+          <xs:element name="prParam5" type="xs:string" />
+          <xs:element name="prParam6" type="xs:string" />
+          <xs:element name="prParam7" type="xs:string" />
+          <xs:element name="prParam8" type="xs:string" />
+          <xs:element name="prParam9" type="xs:string" />
+          <xs:element name="prParam10" type="xs:string" />
+          <xs:element name="prParam11" type="xs:string" />
+          <xs:element name="prParam12" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otObjectRows">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="prObjectRow" type="xs1:otObjectRow" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otPacientListPage">
+        <xs:sequence>
+          <xs:element name="prRespHeader" type="xs1:otRespHeader" />
+          <xs:element name="prRecordCount" type="xs:int" />
+          <xs:element name="prPageCount" type="xs:int" />
+          <xs:element name="prPacientListRows" type="xs1:otPacientListRows" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otPacientListRow">
+        <xs:sequence>
+          <xs:element name="prPacientRef" type="xs:string" />
+          <xs:element name="prFIO" type="xs:string" />
+          <xs:element name="prDateBirth" type="xs:string" />
+          <xs:element name="prPhoneNumber" type="xs:string" />
+          <xs:element name="prCreateDate" type="xs:string" />
+          <xs:element name="prDateLast" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otPacientListRows">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="prPacientListRow" type="xs1:otPacientListRow" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otParamValueEdit">
+        <xs:sequence>
+          <xs:element name="prRef" type="xs:string" />
+          <xs:element name="prValue" type="xs:string" />
+          <xs:element name="prEdited" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otParamValueEditKit">
+        <xs:sequence>
+          <xs:element name="prParamValues" type="xs1:otParamValuesEdit" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otParamValueShow">
+        <xs:sequence>
+          <xs:element name="prRef" type="xs:string" />
+          <xs:element name="prName" type="xs:string" />
+          <xs:element name="prCaption" type="xs:string" />
+          <xs:element name="prDataType" type="xs:string" />
+          <xs:element name="prPermiss" type="xs:string" />
+          <xs:element name="prValue" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otParamValuesEdit">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="prParamValueEdit" type="xs1:otParamValueEdit" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otParamValuesShow">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="prParamValueShow" type="xs1:otParamValueShow" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otRespHeader">
+        <xs:sequence>
+          <xs:element name="prRespResult" type="xs:int" />
+          <xs:element name="prRespMessage" type="xs:string" />
+          <xs:element name="prRespMessagePos" type="xs:int" />
+          <xs:element name="prRespInfo" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otServiceHeaderEdit">
+        <xs:sequence>
+          <xs:element name="prHeaderEdited" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otServiceListPage">
+        <xs:sequence>
+          <xs:element name="prRespHeader" type="xs1:otRespHeader" />
+          <xs:element name="prRecordCount" type="xs:int" />
+          <xs:element name="prPageCount" type="xs:int" />
+          <xs:element name="prServiceListRows" type="xs1:otServiceListRows" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otServiceListRow">
+        <xs:sequence>
+          <xs:element name="prServiceRef" type="xs:string" />
+          <xs:element name="prServiceNum" type="xs:string" />
+          <xs:element name="prDate" type="xs:string" />
+          <xs:element name="prTime" type="xs:string" />
+          <xs:element name="prPacientRef" type="xs:string" />
+          <xs:element name="prPacient" type="xs:string" />
+          <xs:element name="prUserName" type="xs:string" />
+          <xs:element name="prCaption" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otServiceListRows">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="prServiceListRow" type="xs1:otServiceListRow" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otServiceShow">
+        <xs:sequence>
+          <xs:element name="prRespHeader" type="xs1:otRespHeader" />
+          <xs:element name="prParamCount" type="xs:int" />
+          <xs:element name="prServiceRef" type="xs:string" />
+          <xs:element name="prServiceNum" type="xs:string" />
+          <xs:element name="prDate" type="xs:string" />
+          <xs:element name="prTime" type="xs:string" />
+          <xs:element name="prPacient" type="xs:string" />
+          <xs:element name="prUserName" type="xs:string" />
+          <xs:element name="prCaption" type="xs:string" />
+          <xs:element name="prParamValuesShow" type="xs1:otParamValuesShow" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otShowUserInfo">
+        <xs:sequence>
+          <xs:element name="prRespHeader" type="xs1:otRespHeader" />
+          <xs:element name="prUserName" type="xs:string" />
+          <xs:element name="prIsGuest" type="xs:int" />
+          <xs:element name="prCompanyName" type="xs:string" />
+          <xs:element name="prLastEventDate" type="xs:string" />
+          <xs:element name="prLastEvent" type="xs:string" />
+          <xs:element name="prLastEventStyle" type="xs:int" />
+          <xs:element name="prUploadPath" type="xs:string" />
+          <xs:element name="prPacientLinkText" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otTemplParam">
+        <xs:sequence>
+          <xs:element name="prRef" type="xs:string" />
+          <xs:element name="prRowNum" type="xs:string" />
+          <xs:element name="prName" type="xs:string" />
+          <xs:element name="prCaption" type="xs:string" />
+          <xs:element name="prDataType" type="xs:string" />
+          <xs:element name="prPermiss" type="xs:string" />
+          <xs:element name="prValue" type="xs:string" />
+          <xs:element name="prCreateDate" type="xs:string" />
+          <xs:element name="prCreateUser" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otTemplParamList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="prTemplParam" type="xs1:otTemplParam" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otTemplateList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="prTemplateListRow" type="xs1:otTemplateListRow" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otTemplateListPage">
+        <xs:sequence>
+          <xs:element name="prRespHeader" type="xs1:otRespHeader" />
+          <xs:element name="prRecordCount" type="xs:int" />
+          <xs:element name="prPageCount" type="xs:int" />
+          <xs:element name="prTemplateList" type="xs1:otServiceListRows" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otTemplateListRow">
+        <xs:sequence>
+          <xs:element name="prTemplateRef" type="xs:string" />
+          <xs:element name="prTemplateName" type="xs:string" />
+          <xs:element name="prParamCount" type="xs:int" />
+          <xs:element name="prCreateDate" type="xs:string" />
+          <xs:element name="prCreateUser" type="xs:string" />
+          <xs:element name="prCaption" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otTemplateShow">
+        <xs:sequence>
+          <xs:element name="prRespHeader" type="xs1:otRespHeader" />
+          <xs:element name="prParamCount" type="xs:int" />
+          <xs:element name="prTemplateRef" type="xs:string" />
+          <xs:element name="prTemplateName" type="xs:string" />
+          <xs:element name="prCreateDate" type="xs:string" />
+          <xs:element name="prCreateUser" type="xs:string" />
+          <xs:element name="prCaption" type="xs:string" />
+          <xs:element name="prTemplParamList" type="xs1:otTemplParamList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otTicketListPage">
+        <xs:sequence>
+          <xs:element name="prRespHeader" type="xs1:otRespHeader" />
+          <xs:element name="prRecordCount" type="xs:int" />
+          <xs:element name="prPageCount" type="xs:int" />
+          <xs:element name="prTicketListRows" type="xs1:otTicketListRows" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otTicketListRow">
+        <xs:sequence>
+          <xs:element name="prTicketRef" type="xs:string" />
+          <xs:element name="prTicketNum" type="xs:string" />
+          <xs:element name="prDate" type="xs:string" />
+          <xs:element name="prTime" type="xs:string" />
+          <xs:element name="prPacient" type="xs:string" />
+          <xs:element name="prUserName" type="xs:string" />
+          <xs:element name="prCaption" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otTicketListRows">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="prTicketListRow" type="xs1:otTicketListRow" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otTicketShow">
+        <xs:sequence>
+          <xs:element name="prRespHeader" type="xs1:otRespHeader" />
+          <xs:element name="prServiceCount" type="xs:int" />
+          <xs:element name="prTicketRef" type="xs:string" />
+          <xs:element name="prTicketNum" type="xs:string" />
+          <xs:element name="prDate" type="xs:string" />
+          <xs:element name="prTime" type="xs:string" />
+          <xs:element name="prPacient" type="xs:string" />
+          <xs:element name="prUserName" type="xs:string" />
+          <xs:element name="prCaption" type="xs:string" />
+          <xs:element name="prTicketServices" type="xs1:otTicketShowServices" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otTicketShowService">
+        <xs:sequence>
+          <xs:element name="prServiceRef" type="xs:string" />
+          <xs:element name="prServiceNum" type="xs:string" />
+          <xs:element name="prDate" type="xs:string" />
+          <xs:element name="prTime" type="xs:string" />
+          <xs:element name="prUserName" type="xs:string" />
+          <xs:element name="prCaption" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otTicketShowServices">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="prTicketShowService" type="xs1:otTicketShowService" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="fTicketListPage">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="vUserRef" type="xs:string" />
+            <xs:element name="vPageNum" type="xs:int" />
+            <xs:element name="vRowsPerPage" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="fTicketListPageResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:otTicketListPage" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="fTicketShow">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="vUserRef" type="xs:string" />
+            <xs:element name="vTicketRef" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="fTicketShowResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:otTicketShow" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="fServiceListPage">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="vUserRef" type="xs:string" />
+            <xs:element name="vPageNum" type="xs:int" />
+            <xs:element name="vRowsPerPage" type="xs:int" />
+            <xs:element name="vPacientRef" type="xs:string" />
+            <xs:element name="vDate1" type="xs:string" />
+            <xs:element name="vDate2" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="fServiceListPageResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:otServiceListPage" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="fServiceShow">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="vUserRef" type="xs:string" />
+            <xs:element name="vServiceRef" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="fServiceShowResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:otServiceShow" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="fServiceEdit">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="vUserRef" type="xs:string" />
+            <xs:element name="vAnyActionParams" type="xs1:otAnyActionParams" />
+            <xs:element name="vParamValuesEdit" type="xs1:otParamValuesEdit" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="fServiceEditResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:otAnyActionResp" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="fAnyAction">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="vUserRef" type="xs:string" />
+            <xs:element name="vAnyActionData" type="xs1:otAnyActionData" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="fAnyActionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:otAnyActionResp" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="fShowUserInfo">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="vUserRef" type="xs:string" />
+            <xs:element name="vCurPacientRef" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="fShowUserInfoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:otShowUserInfo" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="fCheckUser">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="vILogin" type="xs:string" />
+            <xs:element name="vIPass" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="fCheckUserResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:otCheckUser" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="fPacientListPage">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="vUserRef" type="xs:string" />
+            <xs:element name="vPageNum" type="xs:int" />
+            <xs:element name="vRowsPerPage" type="xs:int" />
+            <xs:element name="vOrderField" type="xs:int" />
+            <xs:element name="vSearchText" type="xs:string" />
+            <xs:element name="vSearchField" type="xs:int" />
+            <xs:element name="vDate1" type="xs:string" />
+            <xs:element name="vDate2" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="fPacientListPageResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:otPacientListPage" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="fTemplateShow">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="vUserRef" type="xs:string" />
+            <xs:element name="vTemplateRef" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="fTemplateShowResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:otTemplateShow" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="fTamplateListPage1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="vUserRef" type="xs:string" />
+            <xs:element name="vPageNum" type="xs:int" />
+            <xs:element name="vRowsPerPage" type="xs:int" />
+            <xs:element name="vPacientRef" type="xs:string" />
+            <xs:element name="vDate1" type="xs:string" />
+            <xs:element name="vDate2" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="fTamplateListPage1Response">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:otServiceListPage" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="fObjectListPage">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="vUserRef" type="xs:string" />
+            <xs:element name="vAnyActionData" type="xs1:otAnyActionData" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="fObjectListPageResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:otObjectList" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </types>
+  <message name="fTicketListPageRequestMessage">
+    <part name="parameters" element="tns:fTicketListPage" />
+  </message>
+  <message name="fTicketListPageResponseMessage">
+    <part name="parameters" element="tns:fTicketListPageResponse" />
+  </message>
+  <message name="fTicketShowRequestMessage">
+    <part name="parameters" element="tns:fTicketShow" />
+  </message>
+  <message name="fTicketShowResponseMessage">
+    <part name="parameters" element="tns:fTicketShowResponse" />
+  </message>
+  <message name="fServiceListPageRequestMessage">
+    <part name="parameters" element="tns:fServiceListPage" />
+  </message>
+  <message name="fServiceListPageResponseMessage">
+    <part name="parameters" element="tns:fServiceListPageResponse" />
+  </message>
+  <message name="fServiceShowRequestMessage">
+    <part name="parameters" element="tns:fServiceShow" />
+  </message>
+  <message name="fServiceShowResponseMessage">
+    <part name="parameters" element="tns:fServiceShowResponse" />
+  </message>
+  <message name="fServiceEditRequestMessage">
+    <part name="parameters" element="tns:fServiceEdit" />
+  </message>
+  <message name="fServiceEditResponseMessage">
+    <part name="parameters" element="tns:fServiceEditResponse" />
+  </message>
+  <message name="fAnyActionRequestMessage">
+    <part name="parameters" element="tns:fAnyAction" />
+  </message>
+  <message name="fAnyActionResponseMessage">
+    <part name="parameters" element="tns:fAnyActionResponse" />
+  </message>
+  <message name="fShowUserInfoRequestMessage">
+    <part name="parameters" element="tns:fShowUserInfo" />
+  </message>
+  <message name="fShowUserInfoResponseMessage">
+    <part name="parameters" element="tns:fShowUserInfoResponse" />
+  </message>
+  <message name="fCheckUserRequestMessage">
+    <part name="parameters" element="tns:fCheckUser" />
+  </message>
+  <message name="fCheckUserResponseMessage">
+    <part name="parameters" element="tns:fCheckUserResponse" />
+  </message>
+  <message name="fPacientListPageRequestMessage">
+    <part name="parameters" element="tns:fPacientListPage" />
+  </message>
+  <message name="fPacientListPageResponseMessage">
+    <part name="parameters" element="tns:fPacientListPageResponse" />
+  </message>
+  <message name="fTemplateShowRequestMessage">
+    <part name="parameters" element="tns:fTemplateShow" />
+  </message>
+  <message name="fTemplateShowResponseMessage">
+    <part name="parameters" element="tns:fTemplateShowResponse" />
+  </message>
+  <message name="fTamplateListPage1RequestMessage">
+    <part name="parameters" element="tns:fTamplateListPage1" />
+  </message>
+  <message name="fTamplateListPage1ResponseMessage">
+    <part name="parameters" element="tns:fTamplateListPage1Response" />
+  </message>
+  <message name="fObjectListPageRequestMessage">
+    <part name="parameters" element="tns:fObjectListPage" />
+  </message>
+  <message name="fObjectListPageResponseMessage">
+    <part name="parameters" element="tns:fObjectListPageResponse" />
+  </message>
+  <portType name="wsSkyPortType">
+    <operation name="fTicketListPage">
+      <input message="tns:fTicketListPageRequestMessage" />
+      <output message="tns:fTicketListPageResponseMessage" />
+    </operation>
+    <operation name="fTicketShow">
+      <input message="tns:fTicketShowRequestMessage" />
+      <output message="tns:fTicketShowResponseMessage" />
+    </operation>
+    <operation name="fServiceListPage">
+      <input message="tns:fServiceListPageRequestMessage" />
+      <output message="tns:fServiceListPageResponseMessage" />
+    </operation>
+    <operation name="fServiceShow">
+      <input message="tns:fServiceShowRequestMessage" />
+      <output message="tns:fServiceShowResponseMessage" />
+    </operation>
+    <operation name="fServiceEdit">
+      <input message="tns:fServiceEditRequestMessage" />
+      <output message="tns:fServiceEditResponseMessage" />
+    </operation>
+    <operation name="fAnyAction">
+      <input message="tns:fAnyActionRequestMessage" />
+      <output message="tns:fAnyActionResponseMessage" />
+    </operation>
+    <operation name="fShowUserInfo">
+      <input message="tns:fShowUserInfoRequestMessage" />
+      <output message="tns:fShowUserInfoResponseMessage" />
+    </operation>
+    <operation name="fCheckUser">
+      <input message="tns:fCheckUserRequestMessage" />
+      <output message="tns:fCheckUserResponseMessage" />
+    </operation>
+    <operation name="fPacientListPage">
+      <input message="tns:fPacientListPageRequestMessage" />
+      <output message="tns:fPacientListPageResponseMessage" />
+    </operation>
+    <operation name="fTemplateShow">
+      <input message="tns:fTemplateShowRequestMessage" />
+      <output message="tns:fTemplateShowResponseMessage" />
+    </operation>
+    <operation name="fTamplateListPage1">
+      <input message="tns:fTamplateListPage1RequestMessage" />
+      <output message="tns:fTamplateListPage1ResponseMessage" />
+    </operation>
+    <operation name="fObjectListPage">
+      <input message="tns:fObjectListPageRequestMessage" />
+      <output message="tns:fObjectListPageResponseMessage" />
+    </operation>
+  </portType>
+  <binding name="wsSkySoapBinding" type="tns:wsSkyPortType">
+    <soapbind:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="fTicketListPage">
+      <soapbind:operation soapAction="www.sky3a.hiware.ru#wsSky:fTicketListPage" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="fTicketShow">
+      <soapbind:operation soapAction="www.sky3a.hiware.ru#wsSky:fTicketShow" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="fServiceListPage">
+      <soapbind:operation soapAction="www.sky3a.hiware.ru#wsSky:fServiceListPage" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="fServiceShow">
+      <soapbind:operation soapAction="www.sky3a.hiware.ru#wsSky:fServiceShow" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="fServiceEdit">
+      <soapbind:operation soapAction="www.sky3a.hiware.ru#wsSky:fServiceEdit" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="fAnyAction">
+      <soapbind:operation soapAction="www.sky3a.hiware.ru#wsSky:fAnyAction" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="fShowUserInfo">
+      <soapbind:operation soapAction="www.sky3a.hiware.ru#wsSky:fShowUserInfo" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="fCheckUser">
+      <soapbind:operation soapAction="www.sky3a.hiware.ru#wsSky:fCheckUser" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="fPacientListPage">
+      <soapbind:operation soapAction="www.sky3a.hiware.ru#wsSky:fPacientListPage" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="fTemplateShow">
+      <soapbind:operation soapAction="www.sky3a.hiware.ru#wsSky:fTemplateShow" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="fTamplateListPage1">
+      <soapbind:operation soapAction="www.sky3a.hiware.ru#wsSky:fTamplateListPage1" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="fObjectListPage">
+      <soapbind:operation soapAction="www.sky3a.hiware.ru#wsSky:fObjectListPage" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="wsSkySoap12Binding" type="tns:wsSkyPortType">
+    <soap12bind:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="fTicketListPage">
+      <soap12bind:operation soapAction="www.sky3a.hiware.ru#wsSky:fTicketListPage" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="fTicketShow">
+      <soap12bind:operation soapAction="www.sky3a.hiware.ru#wsSky:fTicketShow" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="fServiceListPage">
+      <soap12bind:operation soapAction="www.sky3a.hiware.ru#wsSky:fServiceListPage" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="fServiceShow">
+      <soap12bind:operation soapAction="www.sky3a.hiware.ru#wsSky:fServiceShow" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="fServiceEdit">
+      <soap12bind:operation soapAction="www.sky3a.hiware.ru#wsSky:fServiceEdit" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="fAnyAction">
+      <soap12bind:operation soapAction="www.sky3a.hiware.ru#wsSky:fAnyAction" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="fShowUserInfo">
+      <soap12bind:operation soapAction="www.sky3a.hiware.ru#wsSky:fShowUserInfo" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="fCheckUser">
+      <soap12bind:operation soapAction="www.sky3a.hiware.ru#wsSky:fCheckUser" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="fPacientListPage">
+      <soap12bind:operation soapAction="www.sky3a.hiware.ru#wsSky:fPacientListPage" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="fTemplateShow">
+      <soap12bind:operation soapAction="www.sky3a.hiware.ru#wsSky:fTemplateShow" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="fTamplateListPage1">
+      <soap12bind:operation soapAction="www.sky3a.hiware.ru#wsSky:fTamplateListPage1" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="fObjectListPage">
+      <soap12bind:operation soapAction="www.sky3a.hiware.ru#wsSky:fObjectListPage" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="wsSky">
+    <port name="wsSkySoap" binding="tns:wsSkySoapBinding">
+      <documentation>
+        <wsi:Claim xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" conformsTo="http://ws-i.org/profiles/basic/1.1" />
+      </documentation>
+      <soapbind:address location="http://10.189.185.213/skymbs/ws/wssky1.1cws" />
+    </port>
+    <port name="wsSkySoap12" binding="tns:wsSkySoap12Binding">
+      <soap12bind:address location="http://10.189.185.213/skymbs/ws/wssky1.1cws" />
+    </port>
+  </service>
+</definitions>

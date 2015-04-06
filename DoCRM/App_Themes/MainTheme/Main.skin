@@ -1,0 +1,32 @@
+﻿<asp:LinkButton runat="server" ForeColor="Black">
+
+</asp:LinkButton>
+<asp:LinkButton runat="server" SkinId="LinkButtonGray" ForeColor="#808080">
+
+</asp:LinkButton>
+
+<asp:Label runat="server" SkinId="OrangeLabelSkin" ForeColor="#FF8C00">
+
+</asp:Label>
+<asp:Label runat="server" SkinId="GrayLabelSkin" ForeColor="#808080">
+
+</asp:Label>
+
+<asp:DropDownList runat="server" SkinId="GrayDropDownList" ForeColor="#8B0000" 
+    font-size= ".85em">
+</asp:DropDownList>
+<%--
+Default skin template. The following skins are provided as examples only.
+
+1. Named control skin. The SkinId should be uniquely defined because
+   duplicate SkinId's per control type are not allowed in the same theme.
+
+<asp:GridView runat="server" SkinId="gridviewSkin" BackColor="White" >
+   <AlternatingRowStyle BackColor="Blue" />
+</asp:GridView>
+
+2. Default skin. The SkinId is not defined. Only one default 
+   control skin per control type is allowed in the same theme.
+
+<asp:Image runat="server" ImageUrl="~/images/image1.jpg" />
+--%>

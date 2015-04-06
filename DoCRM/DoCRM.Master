@@ -1,0 +1,95 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="DoCRM.Master.cs" Inherits="DoCRM.FormMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <title></title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+    <div class="page">
+        <table width="100%">
+            <tr>
+                <td>
+                    <table id="table_menu" width="100%">
+                        <tr>
+                            <td> 
+                                <div>        
+                                    <asp:LinkButton ID="linkPacients" runat="server" onclick="linkPacients_Click">Клиенты</asp:LinkButton>
+                                    <asp:Label ID="l_split_1" runat="server" Text="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"></asp:Label>
+                                    <asp:LinkButton ID="linkServices" runat="server" onclick="linkServices_Click">Услуги</asp:LinkButton>
+                                    <asp:Label ID="l_split_2" runat="server" 
+                                        Text="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"></asp:Label>
+                                    <asp:LinkButton ID="linkTemplates" runat="server" onclick="linkTemplates_Click">Шаблоны</asp:LinkButton>
+                                    <asp:Label ID="l_split_3" runat="server" Text="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"></asp:Label>
+                                    
+                                    <asp:LinkButton ID="linkCustomize" runat="server" onclick="linkCustomize_Click">Настройки</asp:LinkButton>
+                                   
+                                </div>
+
+                            </td>
+                            <td>
+                                <h2>
+                                    Welcome to DoctorOblako
+                                </h2> 
+                            </td>                             
+                            <td align="right">
+                                <div>        
+                                    <asp:LinkButton ID="linkParams" runat="server" onclick="linkParams_Click">Параметры</asp:LinkButton>
+                                    <asp:Label ID="l_split_4" runat="server" Text="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"></asp:Label>
+                                    <asp:LinkButton ID="linkExit" runat="server" onclick="linkExit_Click">Выход</asp:LinkButton>
+                                </div>
+                            </td> 
+ 
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table  id="table_info" width="100%">
+                        <tr>
+                            <td>
+                                <div>
+                                    <asp:LinkButton ID="linkPacientPage" runat="server" onclick="linkPacientPage_Click">Васильев Юрий Михайлович 75г.р.</asp:LinkButton> 
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td  style="color: #FF8C00">
+                    <asp:Label ID="lMasterTextTop" runat="server" Text="Не задано условие" 
+                        SkinID="OrangeLabelSkin"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table width="100%">
+                        <tr>
+                            <td>
+                                <div class="main">
+                                    <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+                                </div>
+                                <div class="clear">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="footer">
+        
+        <asp:HiddenField ID="hidpacref" runat="server" />
+        
+    </div>
+    </form>
+</body>
+</html>
